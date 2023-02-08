@@ -13,7 +13,7 @@ describe('DashboardComponent', () => {
 
     const bookRatingMock = {
       rateUp: (book: Book) => book
-    };
+    } as BookRatingService;
 
     await TestBed.configureTestingModule({
       declarations: [
@@ -32,7 +32,14 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should work', () => {
-    expect(true).toBeTruthy();
+  it('doRateUp() should forward all calls to BookRatingService', () => {
+
+    const bookRatingMock = TestBed.inject(BookRatingService);
+    spyOn(bookRatingMock, 'rateUp').and.callThrough();
+
+    const book = {} as Book;
+    component.doRateUp(book);
+
+    expect(bookRatingMock.rateUp).toHaveBeenCalledOnceWith(book);
   });
 });
