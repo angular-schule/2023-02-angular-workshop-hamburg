@@ -1,32 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BooksService } from '../shared/http';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush // ACHTUNG: Problem sobald AJAX gemacht wird
 })
 export class DashboardComponent {
-  books: Book[] = [
-    {
-      isbn: '123',
-      title: 'Angular',
-      description: 'Grundlagen und mehr',
-      price: 36.9,
-      rating: 5
-    },
-    {
-      isbn: '456',
-      title: 'Vue.js',
-      description: 'Das grüne Framework',
-      price: 32.9,
-      rating: 3
-    }
-  ];
+  books: Book[] = [];
 
-  constructor(private rs: BookRatingService) {
+  constructor(private rs: BookRatingService, private bs: BooksService) {
+    this.bs.booksGet().subscribe(books => this.books = books);
   }
 
   doRateUp(book: Book) {
