@@ -30,7 +30,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('TODO', () => {
+  it('should work', () => {
     expect(true).toBeTruthy();
   });
 });
