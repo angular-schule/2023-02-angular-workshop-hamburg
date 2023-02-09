@@ -45,7 +45,7 @@ export class BookCreateComponent {
       price: 1
     }
 
-    this.create.emit(newBook);
+    this.create.next(newBook);
 
     this.bookForm.reset();
   }
