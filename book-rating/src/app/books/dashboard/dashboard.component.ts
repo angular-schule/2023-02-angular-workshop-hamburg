@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
@@ -12,8 +12,10 @@ import { BooksService } from '../shared/http';
 })
 export class DashboardComponent {
   books: Book[] = [];
+  rs = inject(BookRatingService);
+  bs = inject(BooksService);
 
-  constructor(private rs: BookRatingService, private bs: BooksService) {
+  constructor() {
     this.bs.booksGet().subscribe(books => this.books = books);
   }
 
