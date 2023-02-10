@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BooksService } from '../shared/http';
+import { selectBooks, selectLoading } from '../store/book.selectors';
 
 @Component({
   selector: 'br-dashboard',
@@ -11,11 +13,10 @@ import { BooksService } from '../shared/http';
   // changeDetection: ChangeDetectionStrategy.OnPush // ACHTUNG: Problem sobald AJAX gemacht wird
 })
 export class DashboardComponent {
-  books: Book[] = [];
 
-  constructor() {
-    // this.bs.booksGet().subscribe(books => this.books = books);
-  }
+  books$ = inject(Store).select(selectBooks);
+  loading$ = inject(Store).select(selectLoading);
+
 
   doRateUp(book: Book) {
     // const ratedBook = this.rs.rateUp(book);
