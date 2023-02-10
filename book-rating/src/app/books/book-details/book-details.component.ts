@@ -16,8 +16,7 @@ export class BookDetailsComponent {
 
   book$ = inject(ActivatedRoute).paramMap.pipe(
     map(paramMap => paramMap.get('isbn')!),
-    switchMap(isbn => this.bs.booksIsbnGet(isbn)),
-    shareReplay(1)
+    switchMap(isbn => this.bs.booksIsbnGet(isbn))
   )
 
 }
