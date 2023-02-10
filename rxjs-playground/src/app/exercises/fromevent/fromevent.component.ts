@@ -26,7 +26,8 @@ export class FromeventComponent {
       // pure! :-)
       map(event => (event.target as Window).innerWidth),
       debounceTime(2000),
-      startWith(window.innerWidth)
+      startWith(window.innerWidth),
+      // startWith(999)
     ).subscribe(width => this.currentWidth = width)
 
 
