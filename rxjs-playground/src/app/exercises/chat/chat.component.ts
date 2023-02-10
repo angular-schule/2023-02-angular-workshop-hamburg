@@ -35,7 +35,7 @@ export class ChatComponent {
 
     /**************!!**************/
 
-    merge(
+    race(
       this.msg.julia$,
       this.msg.georg$,
       this.msg.john$
