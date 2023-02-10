@@ -12,35 +12,33 @@ import { BooksService } from '../shared/http';
 })
 export class DashboardComponent {
   books: Book[] = [];
-  rs = inject(BookRatingService);
-  bs = inject(BooksService);
 
   constructor() {
-    this.bs.booksGet().subscribe(books => this.books = books);
+    // this.bs.booksGet().subscribe(books => this.books = books);
   }
 
   doRateUp(book: Book) {
-    const ratedBook = this.rs.rateUp(book);
-    // const ratedBook  = {
-    //   ...book,
-    //   rating: book.rating < 5 ? book.rating + 1 : 5
-    // }
-    this.updateAndSort(ratedBook);
+    // const ratedBook = this.rs.rateUp(book);
+    // // const ratedBook  = {
+    // //   ...book,
+    // //   rating: book.rating < 5 ? book.rating + 1 : 5
+    // // }
+    // this.updateAndSort(ratedBook);
   }
 
   doRateDown(book: Book) {
-    const ratedBook = this.rs.rateDown(book);
-    this.updateAndSort(ratedBook);
+    // const ratedBook = this.rs.rateDown(book);
+    // this.updateAndSort(ratedBook);
   }
 
   updateAndSort(ratedBook: Book): void {
-    this.books = this.books
-      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-      .sort((a, b) => b.rating - a.rating)
+    // this.books = this.books
+    //   .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+    //   .sort((a, b) => b.rating - a.rating)
   }
 
   addBook(newBook: Book): void {
-    this.books = [...this.books, newBook]
-      .sort((a, b) => b.rating - a.rating);
+    // this.books = [...this.books, newBook]
+    //   .sort((a, b) => b.rating - a.rating);
   }
 }

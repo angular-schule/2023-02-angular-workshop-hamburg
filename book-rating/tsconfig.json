@@ -22,7 +22,7 @@
       "es2020",
       "dom"
     ],
-    "useDefineForClassFields": true
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -31,4 +31,3 @@
     "strictTemplates": true
   }
 }
-  
