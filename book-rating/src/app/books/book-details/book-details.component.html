@@ -1,4 +1,4 @@
-<ng-container *ngIf="book$ | async as book">
+<!-- <ng-container *ngIf="book$ | async as book">
 
   <h1>{{ book.title }} | {{ book.isbn }}</h1>
 
@@ -7,11 +7,13 @@
     {{ book.description }}
   </p>
 
-</ng-container>
+  <button (click)="showDetails = !showDetails" class="btn btn-primary">
+    Show Details
+  </button>
 
-<button (click)="showDetails = !showDetails" class="btn btn-primary">
-  Show Details
-</button>
+</ng-container> -->
+
+<br-book [book]="book$ | async" />
 
 
 <hr>
